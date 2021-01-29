@@ -1,0 +1,13 @@
+diff --git a/annotation_tools/annotation_tools.py b/annotation_tools/annotation_tools.py
+index a3763f1..8bdbc87 100644
+--- a/annotation_tools/annotation_tools.py
++++ b/annotation_tools/annotation_tools.py
+@@ -51,7 +51,7 @@ def edit_image(image_id):
+   annotations = json_util.dumps(annotations)
+   categories = json_util.dumps(categories)
+ 
+-  if request.is_xhr:
++  if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+     # Return just the data
+     return jsonify({
+       'image' : json.loads(image),
